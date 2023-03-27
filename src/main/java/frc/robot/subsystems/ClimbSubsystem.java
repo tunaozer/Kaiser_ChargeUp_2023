@@ -34,8 +34,8 @@ public class ClimbSubsystem extends SubsystemBase {
     climb2.set(-0.2);
   }
   public void climbStop(){
-    climb1.set(0.008);
-    climb2.set(0.008);
+    climb1.set(0.03);
+    climb2.set(0.03);
   }
 }
 
