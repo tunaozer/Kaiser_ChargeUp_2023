@@ -29,6 +29,7 @@ public class LedSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     double position = m_potentiometer.get();
+    System.out.println(position);
     
     if(position>250&&position<350){
       setColor(0, 0, 255);
