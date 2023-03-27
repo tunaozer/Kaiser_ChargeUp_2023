@@ -60,7 +60,7 @@ public class RobotContainer {
                 m_robotDrive.drive(
                     //-m_driverController.getLeftY(),
                     //-m_driverController.getRightX(),
-                    //-m_driverController.getLeftX(),
+                                                                                                                                                                       //-m_driverController.getLeftX(),
                     -m_driverController.getLeftX(),
                     m_driverController.getLeftY(),
                     m_driverController.getRawAxis(2),                                    
@@ -123,10 +123,12 @@ public Command getAutonomousCommand(){
     Trajectory exampleTrajectory =
         TrajectoryGenerator.generateTrajectory(
             // Start at the origin facing the +X direction
+            
             // Pass through these two interior waypoints, making an 's' curve path
+
             List.of(
                 new Pose2d(0, 0, new Rotation2d(0)),
-                new Pose2d(3, 0, new Rotation2d(0))),
+                new Pose2d(0, 3, new Rotation2d(0))),
                 config
         );
     MecanumControllerCommand mecanumControllerCommand =
@@ -158,7 +160,7 @@ public Command getAutonomousCommand(){
     m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
 
     // Run path following command, then stop at the end.
-    return mecanumControllerCommand.andThen(() -> m_robotDrive.drive(0, 0, 0, false));
+    return new RunCommand(m_climb::climbActive, m_climb).withTimeout(1.5).andThen(new InstantCommand(m_climb::climbStop,m_climb)).andThen(new InstantCommand(m_intake::IntakeUp,m_intake).withTimeout(0.5).andThen(new InstantCommand(m_intake2::IntakeRoll,m_intake2)).withTimeout(2).andThen(mecanumControllerCommand).andThen(() -> m_robotDrive.drive(0, 0, 0, false)));
   
 }
   }

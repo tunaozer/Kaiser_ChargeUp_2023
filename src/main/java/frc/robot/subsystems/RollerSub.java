@@ -26,7 +26,7 @@ public class RollerSub extends SubsystemBase {
   }
 
   public void IntakeRoll(){
-    intake.set(ControlMode.PercentOutput,0.6);
+    intake.set(ControlMode.PercentOutput,0.8);
     
   }
   public void IntakeUnroll(){
