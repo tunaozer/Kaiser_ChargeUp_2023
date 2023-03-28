@@ -93,7 +93,7 @@ public final class Constants {
   }
   public static final class IntakeConstants{
     public static final int IntakePort=7;
-    public static final int IntakeRollPort=3;
+    public static final int IntakeRollPort=5;//yeni değiştirdim
 
   }
 }

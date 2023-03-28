@@ -161,9 +161,25 @@ public Command getAutonomousCommand(){
     m_robotDrive.resetOdometry(exampleTrajectory.getInitialPose());
 
     // Run path following command, then stop at the end.
-    return new RunCommand(m_climb::climbActive, m_climb).withTimeout(1.5).andThen(new InstantCommand(m_climb::climbStop,m_climb)).andThen(new InstantCommand(m_intake::IntakeUp,m_intake).withTimeout(0.5).andThen(new InstantCommand(m_intake2::IntakeRoll,m_intake2)).withTimeout(2).andThen(mecanumControllerCommand).andThen(() -> m_robotDrive.drive(0, 0, 0, false)));
+    return new RunCommand(m_climb::climbActive, m_climb).withTimeout(1.5)
+    .andThen(new InstantCommand(m_climb::climbStop,m_climb))
+    .andThen(new InstantCommand(m_intake::IntakeUp,m_intake).withTimeout(0.5)
+    .andThen(new InstantCommand(m_intake2::IntakeRoll,m_intake2)).withTimeout(2)
+    .andThen(mecanumControllerCommand)                  
+    .andThen(() -> m_robotDrive.drive(0, 0, 0, false)));
     //return new RunCommand(m_climb::climbActive, m_climb).withTimeout(1.5).andThen(new InstantCommand(m_climb::climbStop,m_climb)).andThen(new InstantCommand(m_intake::IntakeUp,m_intake).withTimeout(0.5).andThen(new InstantCommand(m_intake2::IntakeRoll,m_intake2)).withTimeout(2).andThen(m_intake2::IntakeStop,m_intake2).andThen(mecanumControllerCommand2).andThen(() -> m_robotDrive.drive(0, 0, 0, false)));
-  
+  /* 
+    return new RunCommand(m_climb::climbActive, m_climb).withTimeout(1.5)
+    .andThen(new InstantCommand(m_climb::climbStop,m_climb))
+    .andThen(new RunCommand(m_intake::IntakeUp,m_intake).withTimeout(1.5)
+    .andThen(new RunCommand(m_intake2::IntakeRoll,m_intake2)).withTimeout(3)
+    .andThen(new InstantCommand(m_intake::IntakeStopke,m_intake))
+    .andThen(new InstantCommand(m_intake2::IntakeStop,m_intake2))
+    .andThen(new RunCommand(m_climb::climbDisable,m_climb)).withTimeout(1)
+    .andThen(mecanumControllerCommand)
+    .andThen(() -> m_robotDrive.drive(0, 0, 0, false)));
+
+  */
 }
   }
 

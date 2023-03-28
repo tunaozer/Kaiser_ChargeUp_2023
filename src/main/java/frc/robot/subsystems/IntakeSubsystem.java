@@ -35,15 +35,16 @@ public class IntakeSubsystem extends SubsystemBase {
 
 
   public void IntakeUp(){
-    intake.set(ControlMode.PercentOutput,0.3);
+    intake.set(ControlMode.PercentOutput,0.3);  //değiştirilmeli
     intake_pneumatic_state = true;
   }
   public void IntakeDown(){
-    intake.set(ControlMode.PercentOutput,-0.3);
+    intake.set(ControlMode.PercentOutput,-0.3);     //bu da değişcek
     intake_pneumatic_state = false;
   }
   public void IntakeStopke(){
     intake.set(ControlMode.PercentOutput,0);
   }
+  
 }
 

@@ -37,5 +37,7 @@ public class ClimbSubsystem extends SubsystemBase {
     climb1.set(0.03);
     climb2.set(0.03);
   }
+  //yeni ekledim
+
 }
 
