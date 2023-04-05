@@ -87,8 +87,8 @@ public final class Constants {
             kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
   }
   public static final class ClimbConstants{
-    public static final int climbUstPort=8;
-    public static final int climbAltPort=6;
+    public static final int climbUstPort=6;
+    public static final int climbAltPort=8;
 
   }
   public static final class IntakeConstants{

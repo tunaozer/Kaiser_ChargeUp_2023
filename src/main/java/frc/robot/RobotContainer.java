@@ -61,8 +61,8 @@ public class RobotContainer {
                     //-m_driverController.getLeftY(),
                     //-m_driverController.getRightX(),
                                                                                                                                                                        //-m_driverController.getLeftX(),
-                    -m_driverController.getLeftX(),
-                    m_driverController.getLeftY(),
+                    m_driverController.getLeftX(),
+                    -m_driverController.getLeftY(),
                     m_driverController.getRawAxis(2),                                    
                     false),
             m_robotDrive));
@@ -78,7 +78,7 @@ public class RobotContainer {
     // Drive at half speed when the right bumper is held
     new JoystickButton(m_driverController, 10)
         .onTrue(new InstantCommand(() -> m_robotDrive.setMaxOutput(0.2)))
-        .onFalse(new InstantCommand(() -> m_robotDrive.setMaxOutput(0.8)));
+        .onFalse(new InstantCommand(() -> m_robotDrive.setMaxOutput(1)));
 
     new JoystickButton(m_driverController, 5)
     .whileTrue(new InstantCommand (()->m_climb.climbActive()))
